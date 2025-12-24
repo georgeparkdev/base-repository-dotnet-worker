@@ -423,4 +423,7 @@ FodyWeavers.xsd
 
 # BMAD
 .bmad/
+_bmad/
 
+# Generated artifacts from scripts (license scans, downloaded license files)
+scripts/artifacts/

@@ -1,0 +1,67 @@
+name: Check NuGet Licenses
+
+on:
+  push:
+    branches: [main, dev]
+    paths: ["Directory.Packages.props"]
+  pull_request:
+    branches: [main, dev]
+    paths: ["Directory.Packages.props"]
+
+jobs:
+  check-licenses:
+    name: Check licenses
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Install nuget-license tool
+        run: |
+          dotnet tool install --global nuget-license
+          echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Ensure script is executable
+        run: chmod +x scripts/check-licenses.sh
+
+      - name: Run license check
+        id: run-license-check
+        run: |
+          set -euo pipefail
+          scripts/check-licenses.sh || true
+        continue-on-error: true
+
+      - name: Fail if invalid licenses found
+        run: |
+          set -euo pipefail
+
+          # Find generated invalid-package files
+          INVALID_JSON=$(ls scripts/artifacts/nuget-license-invalid-*.json 2>/dev/null || true)
+          INVALID_MD=$(ls scripts/artifacts/nuget-license-invalid-*.md 2>/dev/null || true)
+
+          if [ -n "${INVALID_JSON}" ] && grep -q '"PackageId"' "${INVALID_JSON}"; then
+            echo "Invalid packages with disallowed licenses were found:"
+
+            if [ -f "${INVALID_MD}" ]; then
+              echo
+              cat "${INVALID_MD}"
+            else
+              # Fallback to printing the JSON summary (jq not required, but helps if present)
+              if command -v jq &> /dev/null; then
+                jq -r '.[] | "- \(.PackageId) \(.PackageVersion) — License: \(.License // \"(none)\") — Errors: \(.ValidationErrors | map(.Error) | join(\"; \"))"' "${INVALID_JSON}" || true
+              else
+                cat "${INVALID_JSON}" || true
+              fi
+            fi
+
+            echo "::error::License check failed - invalid package licenses detected"
+            exit 1
+          fi
+
+          echo "All package licenses are allowed."

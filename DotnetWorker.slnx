@@ -11,5 +11,9 @@
     <Project Path="src/DotnetWorker.Infrastructure/DotnetWorker.Infrastructure.csproj" />
     <Project Path="src/DotnetWorker.WorkerService/DotnetWorker.WorkerService.csproj" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="tests/DotnetWorker.ArchitectureTests/DotnetWorker.ArchitectureTests.csproj" />
+    <Project Path="tests/DotnetWorker.IntegrationTests/DotnetWorker.IntegrationTests.csproj" />
+    <Project Path="tests/DotnetWorker.UnitTests/DotnetWorker.UnitTests.csproj" />
+  </Folder>
 </Solution>

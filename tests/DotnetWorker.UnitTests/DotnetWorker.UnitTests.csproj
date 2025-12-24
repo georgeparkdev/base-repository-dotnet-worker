@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DotnetWorker.Domain\DotnetWorker.Domain.csproj" />
+    <ProjectReference Include="..\..\src\DotnetWorker.Application\DotnetWorker.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ApplicationTests\" />
+    <Folder Include="ApplicationTests\WebsiteCheckers\" />
+    <Folder Include="ApplicationTests\WebsiteCheckers\Commands\" />
+  </ItemGroup>
+
+</Project>

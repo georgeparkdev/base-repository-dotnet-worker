@@ -1,77 +1,84 @@
-# Base Repository Starter
+# DotnetWorker
 
-## Overview
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![.NET](https://img.shields.io/badge/.NET-10.0-512bd4)](https://dotnet.microsoft.com/download)
+[![Docker](https://img.shields.io/badge/Docker-Enabled-2496ed)](https://www.docker.com/)
 
-This repository serves as a robust template for creating new project repositories. It comes pre-configured with advanced AI development workflows, including GitHub Copilot integration and the [BMAD Method](https://github.com/bmad-code-org/BMAD-METHOD/), to accelerate your project setup and ensure best practices from day one.
+**DotnetWorker** is a robust .NET Worker Service designed to monitor website status and health. Built with **Clean Architecture** and **Domain-Driven Design (DDD)** principles, it serves as a solid foundation for building scalable and maintainable background processing applications.
 
 ## Features
 
-- **AI-Driven Development**: Built-in support for GitHub Copilot and advanced prompt workflows
-- **BMAD Methodology**: Structured approach for project documentation and architecture
-- **Prompt Automation**: Ready-to-use prompt files for agents, chat modes, instructions, and more
-- **Easy Customization**: Designed to be cloned and adapted for any new repository
+- 🏗️ **Clean Architecture**: Organized into Domain, Application, Infrastructure, and WorkerService layers for separation of concerns.
+- 🎯 **Domain-Driven Design**: Implements DDD patterns like Aggregates, Entities, and Domain Events using `Ardalis.SharedKernel`.
+- 🔄 **Worker Service**: Runs as a background service, perfect for long-running tasks and scheduled jobs.
+- 🐳 **Docker Support**: Includes `Dockerfile` and `docker-compose.yml` for easy containerization and deployment.
+- 📝 **Structured Logging**: Integrated with Serilog for comprehensive logging capabilities.
+- 🧩 **Mediator**: Uses the Mediator pattern for loose coupling between application components.
 
-## Quick Start
+## Getting Started
 
-1. **Clone this repository** to start your new project:
-   ```sh
-   git clone <this-repo-url> <your-new-project>
-   cd <your-new-project>
-   ```
+Follow these instructions to get the project up and running on your local machine for development and testing purposes.
 
-2. **Install BMAD** (Best Method for Architecture & Documentation):
-   - Run the following command to install BMAD globally:
-     ```sh
-     npm install -g @bmad/method
-     ```
-   - Or see the [BMAD Method repository](https://github.com/bmad-code-org/BMAD-METHOD/) for alternative installation options and full documentation.
+### Prerequisites
 
-3. **Define Required Documentation**
-   - Use BMAD to generate essential docs (Product Requirements, Architecture, etc.) up to the PRD and architecture docs:
-     ```sh
-     bmad init
-     bmad doc create prd
-     bmad doc create architecture
-     ```
-   - For more details, see the [BMAD Method Guide](https://github.com/bmad-code-org/BMAD-METHOD/).
+- [.NET SDK](https://dotnet.microsoft.com/download) (Version 10.0 or later recommended)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) (Optional, for containerized execution)
 
-4. **Set Up the AI Workflow**
-   - Run each prompt file below in a fresh chat (in the order listed) to fully enable the AI-powered development workflow:
+### Installation
 
-   **a. Collections (run first):**
-   ```sh
-   #file:suggest-awesome-github-copilot-collections.prompt.md
-   ```
+1.  **Clone the repository:**
 
-   **b. Agents:**
-   ```sh
-   #file:suggest-awesome-github-copilot-agents.prompt.md
-   ```
+    ```bash
+    git clone https://github.com/georgeparkdev/base-repository-dotnet-worker
+    cd base-repository-dotnet-worker
+    ```
 
-   **c. Instructions:**
-   ```sh
-   #file:suggest-awesome-github-copilot-instructions.prompt.md
-   ```
+2. **Rename the project (if needed):**
 
-   **d. Prompts:**
-   ```sh
-   #file:suggest-awesome-github-copilot-prompts.prompt.md
-   ```
+    ```bash
+    ./scripts/rename-solution.sh
+    ```
 
-   **e. Chat Modes:**
-   ```sh
-   #file:suggest-awesome-github-copilot-chatmodes.prompt.md
-   ```
 
-   > [!TIP]
-   > Run each prompt in a new chat for best results. This ensures a clean context for each setup phase.
+3.  **Setup the development environment:**
 
----
+    You can use the provided setup script to initialize the environment.
 
-## Learn More
+    ```bash
+    ./scripts/setup-dev.sh
+    ```
 
-- **BMAD Method:** [Full Guide & Documentation](https://github.com/bmad-code-org/BMAD-METHOD/)
-- **GitHub Copilot:** [Official Documentation](https://docs.github.com/en/copilot)
-- **Awesome Copilot Prompts & Instructions:** [awesome-copilot](https://github.com/github/awesome-copilot)
+### Running the Application
 
----
+#### Local Development
+
+To run the worker service locally:
+
+```bash
+dotnet run
+```
+
+#### Using Docker
+
+To run the application using Docker Compose:
+
+```bash
+docker compose up -d
+```
+
+## Project Structure
+
+The solution follows the Clean Architecture principles:
+
+-   **`DotnetWorker.Domain`**: Contains the core business logic, entities (e.g., `WebsiteChecker`), and interfaces. This layer has no dependencies on other layers.
+-   **`DotnetWorker.Application`**: Contains the application logic, commands, queries, and service interfaces. It depends only on the Domain layer.
+-   **`DotnetWorker.Infrastructure`**: Implements the interfaces defined in the Application and Domain layers (e.g., data access, external service calls).
+-   **`DotnetWorker.WorkerService`**: The entry point of the application. It configures the dependency injection container and hosts the background service.
+
+## Contributing
+
+We welcome contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

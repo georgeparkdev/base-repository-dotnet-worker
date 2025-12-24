@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DotnetWorker.WorkerService\DotnetWorker.WorkerService.csproj" />
+    <ProjectReference Include="..\..\src\DotnetWorker.Application\DotnetWorker.Application.csproj" />
+    <ProjectReference Include="..\..\src\DotnetWorker.Infrastructure\DotnetWorker.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\DotnetWorker.Domain\DotnetWorker.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+</Project>

@@ -1,6 +1,6 @@
 {
   "chat.agent.enabled": true,
-  "chat.agent.maxRequests": 15,
+  "chat.agent.maxRequests": 100,
   "github.copilot.chat.agent.autoFix": true,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
