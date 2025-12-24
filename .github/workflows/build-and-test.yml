@@ -11,7 +11,7 @@ on:
       - dev
 
 env:
-  SOLUTION_FILE: "DotnetWorker.sln"
+  SOLUTION_FILE: "DotnetWorker.slnx"
 
 jobs:
   build-and-test:
