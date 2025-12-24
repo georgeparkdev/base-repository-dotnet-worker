@@ -1,6 +1,11 @@
 {
   "recommendations": [
     "editorconfig.editorconfig",
-    "github.copilot-chat"
+    "github.copilot-chat",
+    "ms-dotnettools.csdevkit",
+    "ms-dotnettools.vscode-dotnet-runtime",
+    "ms-dotnettools.csharp",
+    "ms-azuretools.vscode-containers",
+    "ms-azuretools.vscode-docker"
   ]
 }

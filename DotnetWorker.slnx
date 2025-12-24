@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/DotnetWorker.Application/DotnetWorker.Application.csproj" />
+    <Project Path="src/DotnetWorker.Domain/DotnetWorker.Domain.csproj" />
+    <Project Path="src/DotnetWorker.Infrastructure/DotnetWorker.Infrastructure.csproj" />
+    <Project Path="src/DotnetWorker.WorkerService/DotnetWorker.WorkerService.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>

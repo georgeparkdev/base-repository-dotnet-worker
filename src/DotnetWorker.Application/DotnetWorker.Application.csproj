@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DotnetWorker.Domain\DotnetWorker.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="WebsiteCheckers\Dtos\" />
+    <Folder Include="WebsiteCheckers\EventHandlers\" />
+    <Folder Include="WebsiteCheckers\Interfaces\" />
+    <Folder Include="WebsiteCheckers\Queries\" />
+  </ItemGroup>
+
+</Project>

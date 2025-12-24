@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" />
+    <PackageReference Include="Ardalis.Result" />
+    <PackageReference Include="Ardalis.SharedKernel" />
+    <PackageReference Include="Ardalis.SmartEnum" />
+    <PackageReference Include="Ardalis.Specification" />
+    <PackageReference Include="Mediator.Abstractions" />
+    <PackageReference Include="Vogen" ExcludeAssets="contentfiles;" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="WebsitesCheckers\Events\" />
+    <Folder Include="WebsitesCheckers\Specifications\" />
+  </ItemGroup>
+</Project>

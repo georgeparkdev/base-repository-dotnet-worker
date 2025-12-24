@@ -16,5 +16,8 @@
     "*.agent.md": "chatagent",
     "*.instructions.md": "instructions",
     "*.prompt.md": "prompt"
+  },
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
   }
 }
