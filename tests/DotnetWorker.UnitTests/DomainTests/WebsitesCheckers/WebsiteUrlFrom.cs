@@ -27,7 +27,7 @@ public class WebsiteUrlFrom
     [InlineData("   ")]
     [InlineData("invalid-url")]
     [InlineData("domain-only.com")]
-    public void ThrowsException_GivenInvalidValue(string input)
+    public void ThrowsException_GivenInvalidValue(string? input)
     {
         // Arrange
 
